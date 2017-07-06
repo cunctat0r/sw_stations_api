@@ -7,6 +7,9 @@
     "start": "node server/server.js",
     "test": "export NODE_ENV=test && mocha server/**/*.test.js"
   },
+  "engines": {
+    "node": "6.10.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cunctat0r/sw_stations_api.git"
