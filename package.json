@@ -4,7 +4,8 @@
   "description": "Short Wave Stations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "test": "export NODE_ENV=test && mocha server/**/*.test.js"
   },
   "repository": {
     "type": "git",
