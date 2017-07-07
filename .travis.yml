@@ -1,13 +1,16 @@
 language: node_js
 node_js:
-    - "6"
+- '6'
 services:
-  - mongodb
+- mongodb
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - g++-4.8
+notifications:
+  slack:
+    secure: uhuyLLD5rr7dGwnzsnXBSZrH2RDECJBQ+jO/5na7ghpQp2mksZoBrURSBcXvePI/9YomaLShNzJuMohVmKK2MQcnWSvWNWz/VQTdkyiVRCywWT/199VVlLFhe6gavKkBnp6g1SuUA0yGMmMTn4h5kJEoeiD5+BPR6GsqJfbb9Ug1/miNcODSiT3XJqZ3tnFQbkPi6gF3bcZzcQBRdfI4uJitcadKaUxpqLNaT/JIbI1RoUxoi9x9hmTm3vDkL8LvcTK0MskoGiePcAIn9JjkkbM87PI70qDIXWKBJvDrfn+2zA3ehigDqojajZKyrv+P0lS9FPt8VbKpJv5z/vKqbDdYkjWN8ODWcrpbjS6Hm5ogX+ySOiIksvO6rYyCIuppnljY0XpoXSWqoBaloN07E69YERBiUUYxRVZaRp3Pw5mSn0oa+LHDgqu/HMa0GXc+XGj2ZBtQxHkELD0qfhr4RfdGo0MElDx7AwkGumdiJtNDROs7ZQe3hsbrLKk4omd0CA6o9ebZ8T21CGrXCAv2s16og+IkLolyHKRa050lzIrxhzI/5CFAR6u9FYsfPEo/mroiTpb7v+4d8AugZt3vpYCWJeWZLKdTxGBuoLRPYVcEf1Kvkekm3dP+Zql9pxSxsmuGwI+Y2nGUzAJ9sZf3RfllioQEd+b+cvSna1mj9Do=
