@@ -13,7 +13,8 @@ const stations = [{
   }, {
     '_id' : new ObjectID(),
     'name': 'Second test station',
-    'freq': 987.456
+    'freq': 987.456,
+    'actual': true
 }];
 
 beforeEach((done) => {
