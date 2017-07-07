@@ -47,23 +47,23 @@ describe('POST /stations', () => {
         }).catch((e) => done(e));
       });
   });
-/*
-  it('should not create todo with invalid body data', (done) => {
+
+  it('should not create station with invalid body data', (done) => {
     request(app)
-      .post('/todos')
+      .post('/stations')
       .send({})
       .expect(400)
       .end((err, res) => {
         if (err) {
           return done(err);
         }
-        Todo.find().then((todos) => {
-          expect(todos.length).toBe(2);
+        Station.find().then((stations) => {
+          expect(stations.length).toBe(2);
           done();
         }).catch((e) => done(e));
       })
   });
-*/
+
 });
 
 
