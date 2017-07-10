@@ -53,13 +53,10 @@ app.delete('/stations/:id', (req, res) => {
     return res.status(404).send();
   };
   Station.findByIdAndRemove(id).then((station) => {
-    return (!station) ? res.status(404).send() : res.status(200).send({station}) ;
-    /*
     if (!station) {
       return res.status(404).send();
     }
     res.status(200).send({station});
-    */
   }, (e) => {
     res.status(400).send();
   });  
