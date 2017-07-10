@@ -15,7 +15,13 @@ const stations = [{
     'name': 'Second test station',
     'freq': 987.456,
     'actual': true
-}];
+  }, {
+    '_id' : new ObjectID(),
+    'name': 'Third test station',
+    'freq': 1987.456,
+    'actual': false
+  } 
+];
 
 beforeEach((done) => {
   Station.remove({}).then(() => {
@@ -58,7 +64,7 @@ describe('POST /stations', () => {
           return done(err);
         }
         Station.find().then((stations) => {
-          expect(stations.length).toBe(2);
+          expect(stations.length).toBe(3);
           done();
         }).catch((e) => done(e));
       })
@@ -73,7 +79,7 @@ describe('GET /stations', () => {
       .get('/stations')
       .expect(200)
       .expect((res) => {
-        expect(res.body.stations.length).toBe(2);
+        expect(res.body.stations.length).toBe(3);
       })
       .end(done);
       });
