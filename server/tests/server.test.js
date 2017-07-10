@@ -15,7 +15,13 @@ const stations = [{
     'name': 'Second test station',
     'freq': 987.456,
     'actual': true
-}];
+  }, {
+    '_id' : new ObjectID(),
+    'name': 'Third test station',
+    'freq': 1987.456,
+    'actual': false
+  } 
+];
 
 beforeEach((done) => {
   Station.remove({}).then(() => {
@@ -58,7 +64,7 @@ describe('POST /stations', () => {
           return done(err);
         }
         Station.find().then((stations) => {
-          expect(stations.length).toBe(2);
+          expect(stations.length).toBe(3);
           done();
         }).catch((e) => done(e));
       })
@@ -66,24 +72,22 @@ describe('POST /stations', () => {
 
 });
 
-
 describe('GET /stations', () => {
   it('Should get all stations', (done) => {
     request(app)
       .get('/stations')
       .expect(200)
       .expect((res) => {
-        expect(res.body.stations.length).toBe(2);
+        expect(res.body.stations.length).toBe(3);
       })
       .end(done);
       });
 });
 
-/*
-describe('GET /todos/:id', () => {
+describe('GET /stations/:id', () => {
   it('Should return 404 for non-valid id', (done) => {
     request(app)
-      .get('/todos/123')
+      .get('/stations/123')
       .expect(404)
       .end(done);
   });
@@ -91,22 +95,22 @@ describe('GET /todos/:id', () => {
   it('Should return 404 for non-existing id', (done) => {
     var newId = new ObjectID();
     request(app)
-      .get(`/todos/${newId.toHexString()}`)
+      .get(`/stations/${newId.toHexString()}`)
       .expect(404)
       .end(done);
   });
 
-  it('Should return todo for valid id', (done) => {
+  it('Should return station for valid id', (done) => {
     request(app)
-      .get(`/todos/${todos[0]['_id']}`)
+      .get(`/stations/${stations[0]['_id']}`)
       .expect(200)
-      .expect((todo) => {
-        expect(todo.body.todo.text).toBe('First test todo');
+      .expect((res) => {
+        expect(res.body.name).toBe(stations[0]['name']);
       })
       .end(done)
   });
 });
-
+/*
 describe('DELETE /todos/:id', () => {
   it('should return 404 for non-valid id', (done) => {
     var newId = '123abc';
