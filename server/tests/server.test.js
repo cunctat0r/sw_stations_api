@@ -110,12 +110,12 @@ describe('GET /stations/:id', () => {
       .end(done)
   });
 });
-/*
-describe('DELETE /todos/:id', () => {
+
+describe('DELETE /stations/:id', () => {
   it('should return 404 for non-valid id', (done) => {
     var newId = '123abc';
     request(app)
-      .delete(`/todos/${newId}`)
+      .delete(`/stations/${newId}`)
       .expect(404)
       .end(done);
   });
@@ -123,32 +123,32 @@ describe('DELETE /todos/:id', () => {
   it('should return 404 for non-existing id', (done) => {
     var newId = new ObjectID().toHexString();
     request(app)
-      .delete(`/todos/${newId}`)
+      .delete(`/stations/${newId}`)
       .expect(404)
       .end(done);  
   });
 
   it('should delete document for valid id and return this document', (done) => {
-    var newId = todos[0]._id.toHexString();
+    var newId = stations[0]._id.toHexString();
     request(app)
-      .delete(`/todos/${newId}`)
+      .delete(`/stations/${newId}`)
       .expect(200)
       .expect((res) => {
-        expect(res.body.todo._id).toBe(newId);
-        expect(res.body.todo.text).toBe('First test todo');
+        expect(res.body.station._id).toBe(newId);
+        expect(res.body.station.name).toBe(stations[0]['name']);
       })
       .end((err, res) => {
         if (err) {
           return done(err);
         }
-        Todo.findById(newId).then((todo) => {
-          expect(todo).toNotExist();
+        Station.findById(newId).then((station) => {
+          expect(station).toNotExist();
           done();
         }).catch((e) => done(e));
       });
   });
-})
-
+});
+/*
 describe('PATCH /todos/:id', () => {
   it('should make todo completed', (done) => {
     var patchTodo = {

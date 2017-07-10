@@ -47,6 +47,21 @@ app.post('/stations', (req, res) => {
   });
 });
 
+app.delete('/stations/:id', (req, res) => {
+  var id = req.params.id;
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  };
+  Station.findByIdAndRemove(id).then((station) => {
+    if (!station) {
+      return res.status(404).send();
+    }
+    res.status(200).send({station});
+  }, (e) => {
+    res.status(400).send();
+  });  
+});
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
