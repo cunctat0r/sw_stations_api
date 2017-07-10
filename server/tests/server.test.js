@@ -148,51 +148,51 @@ describe('DELETE /stations/:id', () => {
       });
   });
 });
-/*
-describe('PATCH /todos/:id', () => {
-  it('should make todo completed', (done) => {
-    var patchTodo = {
-      'text' : 'Todo is patched',
-      'completed': true
+
+describe('PATCH /stations:id', () => {
+  it('should make station actual', (done) => {
+    var patchStation = {
+      'name' : 'Station is patched',
+      'freq': 9090.90,
+      'actual': true
     };
-    var newId = todos[0]._id.toHexString();
+    var newId = stations[0]._id.toHexString();
     request(app)
-      .patch(`/todos/${newId}`)
-      .send(patchTodo)
+      .patch(`/stations/${newId}`)
+      .send(patchStation)
       .expect(200)
       .end((err, res) => {
         if (err) {
           return done(err);
         }
-        Todo.findById(newId).then((todo) => {
-          expect(todo.completed).toBe(true);
-          expect(todo.completedAt).toBeA('number');
-          expect(todo.text).toBe(patchTodo.text);
+        Station.findById(newId).then((station) => {
+          expect(station.actual).toBe(true);
+          expect(station.text).toBe(patchStation.text);
           done();
         }).catch((e) => done(e))
       })
-
   });
 
-  it('should make todo uncompleted', () => {
-    var patchTodo = {
-      'completed': false
+  it('should make station not actual', () => {
+    var patchStation = {
+      'name': 'Non-actual station',
+      'freq': 0.0,
+      'actual': false
     };
-    var newId = todos[0]._id.toHexString();
+    var newId = stations[0]._id.toHexString();
     request(app)
-      .patch(`/todos/${newId}`)
-      .send(patchTodo)
+      .patch(`/stations/${newId}`)
+      .send(patchStation)
       .expect(200)
       .end((err, res) => {
         if (err) {
           return done(err);
         }
-        Todo.findById(newId).then((todo) => {
-          expect(todo.completed).toBe(false);
-          expect(todo.completedAt).toBe(null);
+        Station.findById(newId).then((station) => {
+          expect(station.actual).toBe(false);
           done();
         }).catch((e) => done(e))
       })
   });
 });
-*/
+

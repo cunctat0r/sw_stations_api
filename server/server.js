@@ -1,5 +1,6 @@
 require('./config/config');
 
+const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
@@ -60,6 +61,22 @@ app.delete('/stations/:id', (req, res) => {
   }, (e) => {
     res.status(400).send();
   });  
+});
+
+app.patch('/stations/:id', (req, res) => {
+  var id = req.params.id;
+  var body = _.pick(req.body, ['name', 'freq', 'actual']);
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  };
+  Station.findByIdAndUpdate(id, {$set: body}, {new: true}).then((station) => {
+    if (!station) {
+      return res.status(404).send();
+    }
+    res.send({station});
+  }, (e) => {
+    res.status(400).send();
+  })
 });
 
 app.listen(port, () => {
