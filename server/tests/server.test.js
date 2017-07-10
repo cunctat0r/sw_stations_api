@@ -72,7 +72,6 @@ describe('POST /stations', () => {
 
 });
 
-
 describe('GET /stations', () => {
   it('Should get all stations', (done) => {
     request(app)
@@ -84,7 +83,6 @@ describe('GET /stations', () => {
       .end(done);
       });
 });
-
 
 describe('GET /stations/:id', () => {
   it('Should return 404 for non-valid id', (done) => {
